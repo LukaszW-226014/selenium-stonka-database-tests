@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateWypelnieniaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateWypelnieniaLabel_idwypelnienia}" for="idwypelnienia" />
+                    <h:inputText id="idwypelnienia" value="#{wypelnieniaController.selected.idwypelnienia}" title="#{bundle.CreateWypelnieniaTitle_idwypelnienia}" required="true" requiredMessage="#{bundle.CreateWypelnieniaRequiredMessage_idwypelnienia}"/>
+                    <h:outputLabel value="#{bundle.CreateWypelnieniaLabel_data}" for="data" />
+                    <h:inputText id="data" value="#{wypelnieniaController.selected.data}" title="#{bundle.CreateWypelnieniaTitle_data}" />
+                    <h:outputLabel value="#{bundle.CreateWypelnieniaLabel_godzina}" for="godzina" />
+                    <h:inputText id="godzina" value="#{wypelnieniaController.selected.godzina}" title="#{bundle.CreateWypelnieniaTitle_godzina}" />
+                    <h:outputLabel value="#{bundle.CreateWypelnieniaLabel_odpowiedziIdodpowiedzi}" for="odpowiedziIdodpowiedzi" />
+                    <h:selectOneMenu id="odpowiedziIdodpowiedzi" value="#{wypelnieniaController.selected.odpowiedziIdodpowiedzi}" title="#{bundle.CreateWypelnieniaTitle_odpowiedziIdodpowiedzi}" required="true" requiredMessage="#{bundle.CreateWypelnieniaRequiredMessage_odpowiedziIdodpowiedzi}">
+                        <f:selectItems value="#{odpowiedziController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateWypelnieniaLabel_pozycjeIdpozycje}" for="pozycjeIdpozycje" />
+                    <h:selectOneMenu id="pozycjeIdpozycje" value="#{wypelnieniaController.selected.pozycjeIdpozycje}" title="#{bundle.CreateWypelnieniaTitle_pozycjeIdpozycje}" required="true" requiredMessage="#{bundle.CreateWypelnieniaRequiredMessage_pozycjeIdpozycje}">
+                        <f:selectItems value="#{pozycjeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateWypelnieniaLabel_sklepyIdsklepy}" for="sklepyIdsklepy" />
+                    <h:selectOneMenu id="sklepyIdsklepy" value="#{wypelnieniaController.selected.sklepyIdsklepy}" title="#{bundle.CreateWypelnieniaTitle_sklepyIdsklepy}" required="true" requiredMessage="#{bundle.CreateWypelnieniaRequiredMessage_sklepyIdsklepy}">
+                        <f:selectItems value="#{sklepyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{wypelnieniaController.create}" value="#{bundle.CreateWypelnieniaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{wypelnieniaController.prepareList}" value="#{bundle.CreateWypelnieniaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateWypelnieniaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

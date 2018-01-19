@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSklepyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSklepyLabel_idsklepy}" for="idsklepy" />
+                    <h:inputText id="idsklepy" value="#{sklepyController.selected.idsklepy}" title="#{bundle.CreateSklepyTitle_idsklepy}" required="true" requiredMessage="#{bundle.CreateSklepyRequiredMessage_idsklepy}"/>
+                    <h:outputLabel value="#{bundle.CreateSklepyLabel_miejscowosc}" for="miejscowosc" />
+                    <h:inputText id="miejscowosc" value="#{sklepyController.selected.miejscowosc}" title="#{bundle.CreateSklepyTitle_miejscowosc}" />
+                    <h:outputLabel value="#{bundle.CreateSklepyLabel_ulica}" for="ulica" />
+                    <h:inputText id="ulica" value="#{sklepyController.selected.ulica}" title="#{bundle.CreateSklepyTitle_ulica}" />
+                    <h:outputLabel value="#{bundle.CreateSklepyLabel_nrbudynku}" for="nrbudynku" />
+                    <h:inputText id="nrbudynku" value="#{sklepyController.selected.nrbudynku}" title="#{bundle.CreateSklepyTitle_nrbudynku}" />
+                    <h:outputLabel value="#{bundle.CreateSklepyLabel_kodpocztowy}" for="kodpocztowy" />
+                    <h:inputText id="kodpocztowy" value="#{sklepyController.selected.kodpocztowy}" title="#{bundle.CreateSklepyTitle_kodpocztowy}" />
+                    <h:outputLabel value="#{bundle.CreateSklepyLabel_administratorzyIdadministrator}" for="administratorzyIdadministrator" />
+                    <h:selectOneMenu id="administratorzyIdadministrator" value="#{sklepyController.selected.administratorzyIdadministrator}" title="#{bundle.CreateSklepyTitle_administratorzyIdadministrator}" required="true" requiredMessage="#{bundle.CreateSklepyRequiredMessage_administratorzyIdadministrator}">
+                        <f:selectItems value="#{administratorzyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSklepyLabel_kierownicyIdkierownicy}" for="kierownicyIdkierownicy" />
+                    <h:selectOneMenu id="kierownicyIdkierownicy" value="#{sklepyController.selected.kierownicyIdkierownicy}" title="#{bundle.CreateSklepyTitle_kierownicyIdkierownicy}" required="true" requiredMessage="#{bundle.CreateSklepyRequiredMessage_kierownicyIdkierownicy}">
+                        <f:selectItems value="#{kierownicyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sklepyController.create}" value="#{bundle.CreateSklepySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sklepyController.prepareList}" value="#{bundle.CreateSklepyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSklepyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

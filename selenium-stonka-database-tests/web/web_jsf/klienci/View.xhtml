@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewKlienciTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2" id="klienci">
+                    <h:outputText value="#{bundle.ViewKlienciLabel_idklienci}"/>
+                    <h:outputText value="#{klienciController.selected.idklienci}" title="#{bundle.ViewKlienciTitle_idklienci}"/>
+                    <h:outputText value="#{bundle.ViewKlienciLabel_imie}"/>
+                    <h:outputText value="#{klienciController.selected.imie}" title="#{bundle.ViewKlienciTitle_imie}"/>
+                    <h:outputText value="#{bundle.ViewKlienciLabel_nazwisko}"/>
+                    <h:outputText value="#{klienciController.selected.nazwisko}" title="#{bundle.ViewKlienciTitle_nazwisko}"/>
+                    <h:outputText value="#{bundle.ViewKlienciLabel_pesel}"/>
+                    <h:outputText value="#{klienciController.selected.pesel}" title="#{bundle.ViewKlienciTitle_pesel}"/>
+                    <h:outputText value="#{bundle.ViewKlienciLabel_email}"/>
+                    <h:outputText value="#{klienciController.selected.email}" title="#{bundle.ViewKlienciTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewKlienciLabel_haslo}"/>
+                    <h:outputText value="#{klienciController.selected.haslo}" title="#{bundle.ViewKlienciTitle_haslo}"/>
+                    <h:outputText value="#{bundle.ViewKlienciLabel_dataurodzenia}"/>
+                    <h:outputText value="#{klienciController.selected.dataurodzenia}" title="#{bundle.ViewKlienciTitle_dataurodzenia}"/>
+                    <h:outputText value="#{bundle.ViewKlienciLabel_ulica}"/>
+                    <h:outputText value="#{klienciController.selected.ulica}" title="#{bundle.ViewKlienciTitle_ulica}"/>
+                    <h:outputText value="#{bundle.ViewKlienciLabel_nrdomu}"/>
+                    <h:outputText value="#{klienciController.selected.nrdomu}" title="#{bundle.ViewKlienciTitle_nrdomu}"/>
+                    <h:outputText value="#{bundle.ViewKlienciLabel_miejscowosc}"/>
+                    <h:outputText value="#{klienciController.selected.miejscowosc}" title="#{bundle.ViewKlienciTitle_miejscowosc}"/>
+                    <h:outputText value="#{bundle.ViewKlienciLabel_kod}"/>
+                    <h:outputText value="#{klienciController.selected.kod}" title="#{bundle.ViewKlienciTitle_kod}"/>
+                    <h:outputText value="#{bundle.ViewKlienciLabel_pocztowy}"/>
+                    <h:outputText value="#{klienciController.selected.pocztowy}" title="#{bundle.ViewKlienciTitle_pocztowy}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{klienciController.destroyAndView}" value="#{bundle.ViewKlienciDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewKlienciEditLink}"/>
+                <br />
+                <h:commandLink action="#{klienciController.prepareCreate}" value="#{bundle.ViewKlienciCreateLink}" />
+                <br />
+                <h:commandLink action="#{klienciController.prepareList}" value="#{bundle.ViewKlienciShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewKlienciIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

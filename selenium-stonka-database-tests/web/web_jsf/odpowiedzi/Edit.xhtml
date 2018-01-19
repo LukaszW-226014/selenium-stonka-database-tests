@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditOdpowiedziTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditOdpowiedziLabel_idodpowiedzi}" for="idodpowiedzi" />
+                    <h:inputText id="idodpowiedzi" value="#{odpowiedziController.selected.idodpowiedzi}" title="#{bundle.EditOdpowiedziTitle_idodpowiedzi}" required="true" requiredMessage="#{bundle.EditOdpowiedziRequiredMessage_idodpowiedzi}"/>
+                    <h:outputLabel value="#{bundle.EditOdpowiedziLabel_tresc}" for="tresc" />
+                    <h:inputText id="tresc" value="#{odpowiedziController.selected.tresc}" title="#{bundle.EditOdpowiedziTitle_tresc}" />
+                    <h:outputLabel value="#{bundle.EditOdpowiedziLabel_nrporzadkowyodpowiedzi}" for="nrporzadkowyodpowiedzi" />
+                    <h:inputText id="nrporzadkowyodpowiedzi" value="#{odpowiedziController.selected.nrporzadkowyodpowiedzi}" title="#{bundle.EditOdpowiedziTitle_nrporzadkowyodpowiedzi}" />
+                    <h:outputLabel value="#{bundle.EditOdpowiedziLabel_pytaniaIdpytania}" for="pytaniaIdpytania" />
+                    <h:selectOneMenu id="pytaniaIdpytania" value="#{odpowiedziController.selected.pytaniaIdpytania}" title="#{bundle.EditOdpowiedziTitle_pytaniaIdpytania}" required="true" requiredMessage="#{bundle.EditOdpowiedziRequiredMessage_pytaniaIdpytania}">
+                        <f:selectItems value="#{pytaniaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{odpowiedziController.update}" value="#{bundle.EditOdpowiedziSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditOdpowiedziViewLink}"/>
+                <br />
+                <h:commandLink action="#{odpowiedziController.prepareList}" value="#{bundle.EditOdpowiedziShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditOdpowiedziIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

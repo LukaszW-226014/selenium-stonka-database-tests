@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPozycjeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPozycjeLabel_idpozycje}" for="idpozycje" />
+                    <h:inputText id="idpozycje" value="#{pozycjeController.selected.idpozycje}" title="#{bundle.EditPozycjeTitle_idpozycje}" required="true" requiredMessage="#{bundle.EditPozycjeRequiredMessage_idpozycje}"/>
+                    <h:outputLabel value="#{bundle.EditPozycjeLabel_nrporzadkowypozycji}" for="nrporzadkowypozycji" />
+                    <h:inputText id="nrporzadkowypozycji" value="#{pozycjeController.selected.nrporzadkowypozycji}" title="#{bundle.EditPozycjeTitle_nrporzadkowypozycji}" required="true" requiredMessage="#{bundle.EditPozycjeRequiredMessage_nrporzadkowypozycji}"/>
+                    <h:outputLabel value="#{bundle.EditPozycjeLabel_ankietyIdankieta}" for="ankietyIdankieta" />
+                    <h:selectOneMenu id="ankietyIdankieta" value="#{pozycjeController.selected.ankietyIdankieta}" title="#{bundle.EditPozycjeTitle_ankietyIdankieta}" required="true" requiredMessage="#{bundle.EditPozycjeRequiredMessage_ankietyIdankieta}">
+                        <f:selectItems value="#{ankietyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPozycjeLabel_pytaniaIdpytania}" for="pytaniaIdpytania" />
+                    <h:selectOneMenu id="pytaniaIdpytania" value="#{pozycjeController.selected.pytaniaIdpytania}" title="#{bundle.EditPozycjeTitle_pytaniaIdpytania}" required="true" requiredMessage="#{bundle.EditPozycjeRequiredMessage_pytaniaIdpytania}">
+                        <f:selectItems value="#{pytaniaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{pozycjeController.update}" value="#{bundle.EditPozycjeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPozycjeViewLink}"/>
+                <br />
+                <h:commandLink action="#{pozycjeController.prepareList}" value="#{bundle.EditPozycjeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPozycjeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

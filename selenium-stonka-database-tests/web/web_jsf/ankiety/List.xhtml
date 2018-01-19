@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAnkietyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAnkietyEmpty}" rendered="#{ankietyController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{ankietyController.items.rowCount > 0}">
+                    <h:outputText value="#{ankietyController.pagination.pageFirstItem + 1}..#{ankietyController.pagination.pageLastItem + 1}/#{ankietyController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{ankietyController.previous}" value="#{bundle.Previous} #{ankietyController.pagination.pageSize}" rendered="#{ankietyController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{ankietyController.next}" value="#{bundle.Next} #{ankietyController.pagination.pageSize}" rendered="#{ankietyController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{ankietyController.items}" var="item" border="0" cellpadding="2" id="ankiety" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnkietyTitle_idankieta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idankieta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnkietyTitle_tytul}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tytul}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnkietyTitle_opis}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opis}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAnkietyTitle_analitycyIdanalityk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.analitycyIdanalityk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{ankietyController.prepareView}" value="#{bundle.ListAnkietyViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ankietyController.prepareEdit}" value="#{bundle.ListAnkietyEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ankietyController.destroy}" value="#{bundle.ListAnkietyDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{ankietyController.prepareCreate}" value="#{bundle.ListAnkietyCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAnkietyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

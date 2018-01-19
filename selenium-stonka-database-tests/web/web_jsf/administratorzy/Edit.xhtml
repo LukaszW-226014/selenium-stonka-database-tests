@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAdministratorzyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAdministratorzyLabel_idadministratorzy}" for="idadministratorzy" />
+                    <h:inputText id="idadministratorzy" value="#{administratorzyController.selected.idadministratorzy}" title="#{bundle.EditAdministratorzyTitle_idadministratorzy}" required="true" requiredMessage="#{bundle.EditAdministratorzyRequiredMessage_idadministratorzy}"/>
+                    <h:outputLabel value="#{bundle.EditAdministratorzyLabel_imie}" for="imie" />
+                    <h:inputText id="imie" value="#{administratorzyController.selected.imie}" title="#{bundle.EditAdministratorzyTitle_imie}" />
+                    <h:outputLabel value="#{bundle.EditAdministratorzyLabel_nazwisko}" for="nazwisko" />
+                    <h:inputText id="nazwisko" value="#{administratorzyController.selected.nazwisko}" title="#{bundle.EditAdministratorzyTitle_nazwisko}" />
+                    <h:outputLabel value="#{bundle.EditAdministratorzyLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{administratorzyController.selected.email}" title="#{bundle.EditAdministratorzyTitle_email}" required="true" requiredMessage="#{bundle.EditAdministratorzyRequiredMessage_email}"/>
+                    <h:outputLabel value="#{bundle.EditAdministratorzyLabel_pesel}" for="pesel" />
+                    <h:inputText id="pesel" value="#{administratorzyController.selected.pesel}" title="#{bundle.EditAdministratorzyTitle_pesel}" required="true" requiredMessage="#{bundle.EditAdministratorzyRequiredMessage_pesel}"/>
+                    <h:outputLabel value="#{bundle.EditAdministratorzyLabel_haslo}" for="haslo" />
+                    <h:inputText id="haslo" value="#{administratorzyController.selected.haslo}" title="#{bundle.EditAdministratorzyTitle_haslo}" required="true" requiredMessage="#{bundle.EditAdministratorzyRequiredMessage_haslo}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{administratorzyController.update}" value="#{bundle.EditAdministratorzySaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAdministratorzyViewLink}"/>
+                <br />
+                <h:commandLink action="#{administratorzyController.prepareList}" value="#{bundle.EditAdministratorzyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAdministratorzyIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

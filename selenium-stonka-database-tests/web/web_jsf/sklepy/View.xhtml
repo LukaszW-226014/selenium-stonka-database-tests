@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSklepyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2" id="sklepy">
+                    <h:outputText value="#{bundle.ViewSklepyLabel_idsklepy}"/>
+                    <h:outputText value="#{sklepyController.selected.idsklepy}" title="#{bundle.ViewSklepyTitle_idsklepy}"/>
+                    <h:outputText value="#{bundle.ViewSklepyLabel_miejscowosc}"/>
+                    <h:outputText value="#{sklepyController.selected.miejscowosc}" title="#{bundle.ViewSklepyTitle_miejscowosc}"/>
+                    <h:outputText value="#{bundle.ViewSklepyLabel_ulica}"/>
+                    <h:outputText value="#{sklepyController.selected.ulica}" title="#{bundle.ViewSklepyTitle_ulica}"/>
+                    <h:outputText value="#{bundle.ViewSklepyLabel_nrbudynku}"/>
+                    <h:outputText value="#{sklepyController.selected.nrbudynku}" title="#{bundle.ViewSklepyTitle_nrbudynku}"/>
+                    <h:outputText value="#{bundle.ViewSklepyLabel_kodpocztowy}"/>
+                    <h:outputText value="#{sklepyController.selected.kodpocztowy}" title="#{bundle.ViewSklepyTitle_kodpocztowy}"/>
+                    <h:outputText value="#{bundle.ViewSklepyLabel_administratorzyIdadministrator}"/>
+                    <h:outputText value="#{sklepyController.selected.administratorzyIdadministrator}" title="#{bundle.ViewSklepyTitle_administratorzyIdadministrator}"/>
+                    <h:outputText value="#{bundle.ViewSklepyLabel_kierownicyIdkierownicy}"/>
+                    <h:outputText value="#{sklepyController.selected.kierownicyIdkierownicy}" title="#{bundle.ViewSklepyTitle_kierownicyIdkierownicy}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sklepyController.destroyAndView}" value="#{bundle.ViewSklepyDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSklepyEditLink}"/>
+                <br />
+                <h:commandLink action="#{sklepyController.prepareCreate}" value="#{bundle.ViewSklepyCreateLink}" />
+                <br />
+                <h:commandLink action="#{sklepyController.prepareList}" value="#{bundle.ViewSklepyShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSklepyIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

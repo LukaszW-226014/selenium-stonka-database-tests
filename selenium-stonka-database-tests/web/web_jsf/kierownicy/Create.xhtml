@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateKierownicyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateKierownicyLabel_idkierownicy}" for="idkierownicy" />
+                    <h:inputText id="idkierownicy" value="#{kierownicyController.selected.idkierownicy}" title="#{bundle.CreateKierownicyTitle_idkierownicy}" required="true" requiredMessage="#{bundle.CreateKierownicyRequiredMessage_idkierownicy}"/>
+                    <h:outputLabel value="#{bundle.CreateKierownicyLabel_imie}" for="imie" />
+                    <h:inputText id="imie" value="#{kierownicyController.selected.imie}" title="#{bundle.CreateKierownicyTitle_imie}" />
+                    <h:outputLabel value="#{bundle.CreateKierownicyLabel_nazwisko}" for="nazwisko" />
+                    <h:inputText id="nazwisko" value="#{kierownicyController.selected.nazwisko}" title="#{bundle.CreateKierownicyTitle_nazwisko}" />
+                    <h:outputLabel value="#{bundle.CreateKierownicyLabel_pesel}" for="pesel" />
+                    <h:inputText id="pesel" value="#{kierownicyController.selected.pesel}" title="#{bundle.CreateKierownicyTitle_pesel}" required="true" requiredMessage="#{bundle.CreateKierownicyRequiredMessage_pesel}"/>
+                    <h:outputLabel value="#{bundle.CreateKierownicyLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{kierownicyController.selected.email}" title="#{bundle.CreateKierownicyTitle_email}" required="true" requiredMessage="#{bundle.CreateKierownicyRequiredMessage_email}"/>
+                    <h:outputLabel value="#{bundle.CreateKierownicyLabel_haslo}" for="haslo" />
+                    <h:inputText id="haslo" value="#{kierownicyController.selected.haslo}" title="#{bundle.CreateKierownicyTitle_haslo}" required="true" requiredMessage="#{bundle.CreateKierownicyRequiredMessage_haslo}"/>
+                    <h:outputLabel value="#{bundle.CreateKierownicyLabel_administratorzyIdadministrator}" for="administratorzyIdadministrator" />
+                    <h:selectOneMenu id="administratorzyIdadministrator" value="#{kierownicyController.selected.administratorzyIdadministrator}" title="#{bundle.CreateKierownicyTitle_administratorzyIdadministrator}" required="true" requiredMessage="#{bundle.CreateKierownicyRequiredMessage_administratorzyIdadministrator}">
+                        <f:selectItems value="#{administratorzyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{kierownicyController.create}" value="#{bundle.CreateKierownicySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{kierownicyController.prepareList}" value="#{bundle.CreateKierownicyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateKierownicyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

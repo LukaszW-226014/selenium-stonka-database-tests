@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAdministratorzyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAdministratorzyEmpty}" rendered="#{administratorzyController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{administratorzyController.items.rowCount > 0}">
+                    <h:outputText value="#{administratorzyController.pagination.pageFirstItem + 1}..#{administratorzyController.pagination.pageLastItem + 1}/#{administratorzyController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{administratorzyController.previous}" value="#{bundle.Previous} #{administratorzyController.pagination.pageSize}" rendered="#{administratorzyController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{administratorzyController.next}" value="#{bundle.Next} #{administratorzyController.pagination.pageSize}" rendered="#{administratorzyController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{administratorzyController.items}" var="item" border="0" cellpadding="2" id="administratorzy" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdministratorzyTitle_idadministratorzy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idadministratorzy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdministratorzyTitle_imie}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.imie}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdministratorzyTitle_nazwisko}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazwisko}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdministratorzyTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdministratorzyTitle_pesel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pesel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdministratorzyTitle_haslo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.haslo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{administratorzyController.prepareView}" value="#{bundle.ListAdministratorzyViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{administratorzyController.prepareEdit}" value="#{bundle.ListAdministratorzyEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{administratorzyController.destroy}" value="#{bundle.ListAdministratorzyDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{administratorzyController.prepareCreate}" value="#{bundle.ListAdministratorzyCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAdministratorzyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

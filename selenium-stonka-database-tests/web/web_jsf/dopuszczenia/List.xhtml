@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDopuszczeniaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDopuszczeniaEmpty}" rendered="#{dopuszczeniaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{dopuszczeniaController.items.rowCount > 0}">
+                    <h:outputText value="#{dopuszczeniaController.pagination.pageFirstItem + 1}..#{dopuszczeniaController.pagination.pageLastItem + 1}/#{dopuszczeniaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{dopuszczeniaController.previous}" value="#{bundle.Previous} #{dopuszczeniaController.pagination.pageSize}" rendered="#{dopuszczeniaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{dopuszczeniaController.next}" value="#{bundle.Next} #{dopuszczeniaController.pagination.pageSize}" rendered="#{dopuszczeniaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{dopuszczeniaController.items}" var="item" border="0" cellpadding="2" id="dopuszczenia" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDopuszczeniaTitle_iddopuszczenia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.iddopuszczenia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDopuszczeniaTitle_datadopuszczenia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datadopuszczenia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDopuszczeniaTitle_datawycofania}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datawycofania}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDopuszczeniaTitle_ankietyIdankieta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ankietyIdankieta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDopuszczeniaTitle_sklepyIdsklepy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sklepyIdsklepy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{dopuszczeniaController.prepareView}" value="#{bundle.ListDopuszczeniaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dopuszczeniaController.prepareEdit}" value="#{bundle.ListDopuszczeniaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dopuszczeniaController.destroy}" value="#{bundle.ListDopuszczeniaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{dopuszczeniaController.prepareCreate}" value="#{bundle.ListDopuszczeniaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDopuszczeniaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

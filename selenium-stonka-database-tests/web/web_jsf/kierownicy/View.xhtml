@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewKierownicyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2" id="kierownicy">
+                    <h:outputText value="#{bundle.ViewKierownicyLabel_idkierownicy}"/>
+                    <h:outputText value="#{kierownicyController.selected.idkierownicy}" title="#{bundle.ViewKierownicyTitle_idkierownicy}"/>
+                    <h:outputText value="#{bundle.ViewKierownicyLabel_imie}"/>
+                    <h:outputText value="#{kierownicyController.selected.imie}" title="#{bundle.ViewKierownicyTitle_imie}"/>
+                    <h:outputText value="#{bundle.ViewKierownicyLabel_nazwisko}"/>
+                    <h:outputText value="#{kierownicyController.selected.nazwisko}" title="#{bundle.ViewKierownicyTitle_nazwisko}"/>
+                    <h:outputText value="#{bundle.ViewKierownicyLabel_pesel}"/>
+                    <h:outputText value="#{kierownicyController.selected.pesel}" title="#{bundle.ViewKierownicyTitle_pesel}"/>
+                    <h:outputText value="#{bundle.ViewKierownicyLabel_email}"/>
+                    <h:outputText value="#{kierownicyController.selected.email}" title="#{bundle.ViewKierownicyTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewKierownicyLabel_haslo}"/>
+                    <h:outputText value="#{kierownicyController.selected.haslo}" title="#{bundle.ViewKierownicyTitle_haslo}"/>
+                    <h:outputText value="#{bundle.ViewKierownicyLabel_administratorzyIdadministrator}"/>
+                    <h:outputText value="#{kierownicyController.selected.administratorzyIdadministrator}" title="#{bundle.ViewKierownicyTitle_administratorzyIdadministrator}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{kierownicyController.destroyAndView}" value="#{bundle.ViewKierownicyDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewKierownicyEditLink}"/>
+                <br />
+                <h:commandLink action="#{kierownicyController.prepareCreate}" value="#{bundle.ViewKierownicyCreateLink}" />
+                <br />
+                <h:commandLink action="#{kierownicyController.prepareList}" value="#{bundle.ViewKierownicyShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewKierownicyIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

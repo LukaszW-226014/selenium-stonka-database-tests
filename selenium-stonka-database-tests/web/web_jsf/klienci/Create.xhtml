@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateKlienciTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_idklienci}" for="idklienci" />
+                    <h:inputText id="idklienci" value="#{klienciController.selected.idklienci}" title="#{bundle.CreateKlienciTitle_idklienci}" required="true" requiredMessage="#{bundle.CreateKlienciRequiredMessage_idklienci}"/>
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_imie}" for="imie" />
+                    <h:inputText id="imie" value="#{klienciController.selected.imie}" title="#{bundle.CreateKlienciTitle_imie}" />
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_nazwisko}" for="nazwisko" />
+                    <h:inputText id="nazwisko" value="#{klienciController.selected.nazwisko}" title="#{bundle.CreateKlienciTitle_nazwisko}" />
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_pesel}" for="pesel" />
+                    <h:inputText id="pesel" value="#{klienciController.selected.pesel}" title="#{bundle.CreateKlienciTitle_pesel}" />
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{klienciController.selected.email}" title="#{bundle.CreateKlienciTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_haslo}" for="haslo" />
+                    <h:inputText id="haslo" value="#{klienciController.selected.haslo}" title="#{bundle.CreateKlienciTitle_haslo}" />
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_dataurodzenia}" for="dataurodzenia" />
+                    <h:inputText id="dataurodzenia" value="#{klienciController.selected.dataurodzenia}" title="#{bundle.CreateKlienciTitle_dataurodzenia}" />
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_ulica}" for="ulica" />
+                    <h:inputText id="ulica" value="#{klienciController.selected.ulica}" title="#{bundle.CreateKlienciTitle_ulica}" />
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_nrdomu}" for="nrdomu" />
+                    <h:inputText id="nrdomu" value="#{klienciController.selected.nrdomu}" title="#{bundle.CreateKlienciTitle_nrdomu}" />
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_miejscowosc}" for="miejscowosc" />
+                    <h:inputText id="miejscowosc" value="#{klienciController.selected.miejscowosc}" title="#{bundle.CreateKlienciTitle_miejscowosc}" />
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_kod}" for="kod" />
+                    <h:inputText id="kod" value="#{klienciController.selected.kod}" title="#{bundle.CreateKlienciTitle_kod}" />
+                    <h:outputLabel value="#{bundle.CreateKlienciLabel_pocztowy}" for="pocztowy" />
+                    <h:inputText id="pocztowy" value="#{klienciController.selected.pocztowy}" title="#{bundle.CreateKlienciTitle_pocztowy}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{klienciController.create}" value="#{bundle.CreateKlienciSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{klienciController.prepareList}" value="#{bundle.CreateKlienciShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateKlienciIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

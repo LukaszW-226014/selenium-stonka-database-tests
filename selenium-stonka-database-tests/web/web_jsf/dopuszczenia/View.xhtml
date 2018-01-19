@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDopuszczeniaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2" id="dopuszczenia">
+                    <h:outputText value="#{bundle.ViewDopuszczeniaLabel_iddopuszczenia}"/>
+                    <h:outputText value="#{dopuszczeniaController.selected.iddopuszczenia}" title="#{bundle.ViewDopuszczeniaTitle_iddopuszczenia}"/>
+                    <h:outputText value="#{bundle.ViewDopuszczeniaLabel_datadopuszczenia}"/>
+                    <h:outputText value="#{dopuszczeniaController.selected.datadopuszczenia}" title="#{bundle.ViewDopuszczeniaTitle_datadopuszczenia}"/>
+                    <h:outputText value="#{bundle.ViewDopuszczeniaLabel_datawycofania}"/>
+                    <h:outputText value="#{dopuszczeniaController.selected.datawycofania}" title="#{bundle.ViewDopuszczeniaTitle_datawycofania}"/>
+                    <h:outputText value="#{bundle.ViewDopuszczeniaLabel_ankietyIdankieta}"/>
+                    <h:outputText value="#{dopuszczeniaController.selected.ankietyIdankieta}" title="#{bundle.ViewDopuszczeniaTitle_ankietyIdankieta}"/>
+                    <h:outputText value="#{bundle.ViewDopuszczeniaLabel_sklepyIdsklepy}"/>
+                    <h:outputText value="#{dopuszczeniaController.selected.sklepyIdsklepy}" title="#{bundle.ViewDopuszczeniaTitle_sklepyIdsklepy}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dopuszczeniaController.destroyAndView}" value="#{bundle.ViewDopuszczeniaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDopuszczeniaEditLink}"/>
+                <br />
+                <h:commandLink action="#{dopuszczeniaController.prepareCreate}" value="#{bundle.ViewDopuszczeniaCreateLink}" />
+                <br />
+                <h:commandLink action="#{dopuszczeniaController.prepareList}" value="#{bundle.ViewDopuszczeniaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDopuszczeniaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

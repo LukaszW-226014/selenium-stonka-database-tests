@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAnkietyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAnkietyLabel_idankieta}" for="idankieta" />
+                    <h:inputText id="idankieta" value="#{ankietyController.selected.idankieta}" title="#{bundle.EditAnkietyTitle_idankieta}" required="true" requiredMessage="#{bundle.EditAnkietyRequiredMessage_idankieta}"/>
+                    <h:outputLabel value="#{bundle.EditAnkietyLabel_tytul}" for="tytul" />
+                    <h:inputText id="tytul" value="#{ankietyController.selected.tytul}" title="#{bundle.EditAnkietyTitle_tytul}" required="true" requiredMessage="#{bundle.EditAnkietyRequiredMessage_tytul}"/>
+                    <h:outputLabel value="#{bundle.EditAnkietyLabel_opis}" for="opis" />
+                    <h:inputText id="opis" value="#{ankietyController.selected.opis}" title="#{bundle.EditAnkietyTitle_opis}" />
+                    <h:outputLabel value="#{bundle.EditAnkietyLabel_analitycyIdanalityk}" for="analitycyIdanalityk" />
+                    <h:selectOneMenu id="analitycyIdanalityk" value="#{ankietyController.selected.analitycyIdanalityk}" title="#{bundle.EditAnkietyTitle_analitycyIdanalityk}" required="true" requiredMessage="#{bundle.EditAnkietyRequiredMessage_analitycyIdanalityk}">
+                        <f:selectItems value="#{analitycyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{ankietyController.update}" value="#{bundle.EditAnkietySaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAnkietyViewLink}"/>
+                <br />
+                <h:commandLink action="#{ankietyController.prepareList}" value="#{bundle.EditAnkietyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAnkietyIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

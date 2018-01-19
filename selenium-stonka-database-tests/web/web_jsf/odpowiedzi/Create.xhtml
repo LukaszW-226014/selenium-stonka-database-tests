@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateOdpowiedziTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateOdpowiedziLabel_idodpowiedzi}" for="idodpowiedzi" />
+                    <h:inputText id="idodpowiedzi" value="#{odpowiedziController.selected.idodpowiedzi}" title="#{bundle.CreateOdpowiedziTitle_idodpowiedzi}" required="true" requiredMessage="#{bundle.CreateOdpowiedziRequiredMessage_idodpowiedzi}"/>
+                    <h:outputLabel value="#{bundle.CreateOdpowiedziLabel_tresc}" for="tresc" />
+                    <h:inputText id="tresc" value="#{odpowiedziController.selected.tresc}" title="#{bundle.CreateOdpowiedziTitle_tresc}" />
+                    <h:outputLabel value="#{bundle.CreateOdpowiedziLabel_nrporzadkowyodpowiedzi}" for="nrporzadkowyodpowiedzi" />
+                    <h:inputText id="nrporzadkowyodpowiedzi" value="#{odpowiedziController.selected.nrporzadkowyodpowiedzi}" title="#{bundle.CreateOdpowiedziTitle_nrporzadkowyodpowiedzi}" />
+                    <h:outputLabel value="#{bundle.CreateOdpowiedziLabel_pytaniaIdpytania}" for="pytaniaIdpytania" />
+                    <h:selectOneMenu id="pytaniaIdpytania" value="#{odpowiedziController.selected.pytaniaIdpytania}" title="#{bundle.CreateOdpowiedziTitle_pytaniaIdpytania}" required="true" requiredMessage="#{bundle.CreateOdpowiedziRequiredMessage_pytaniaIdpytania}">
+                        <f:selectItems value="#{pytaniaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{odpowiedziController.create}" value="#{bundle.CreateOdpowiedziSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{odpowiedziController.prepareList}" value="#{bundle.CreateOdpowiedziShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateOdpowiedziIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

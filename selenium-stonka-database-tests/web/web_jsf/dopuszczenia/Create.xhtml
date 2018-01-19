@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDopuszczeniaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDopuszczeniaLabel_iddopuszczenia}" for="iddopuszczenia" />
+                    <h:inputText id="iddopuszczenia" value="#{dopuszczeniaController.selected.iddopuszczenia}" title="#{bundle.CreateDopuszczeniaTitle_iddopuszczenia}" required="true" requiredMessage="#{bundle.CreateDopuszczeniaRequiredMessage_iddopuszczenia}"/>
+                    <h:outputLabel value="#{bundle.CreateDopuszczeniaLabel_datadopuszczenia}" for="datadopuszczenia" />
+                    <h:inputText id="datadopuszczenia" value="#{dopuszczeniaController.selected.datadopuszczenia}" title="#{bundle.CreateDopuszczeniaTitle_datadopuszczenia}" required="true" requiredMessage="#{bundle.CreateDopuszczeniaRequiredMessage_datadopuszczenia}"/>
+                    <h:outputLabel value="#{bundle.CreateDopuszczeniaLabel_datawycofania}" for="datawycofania" />
+                    <h:inputText id="datawycofania" value="#{dopuszczeniaController.selected.datawycofania}" title="#{bundle.CreateDopuszczeniaTitle_datawycofania}" />
+                    <h:outputLabel value="#{bundle.CreateDopuszczeniaLabel_ankietyIdankieta}" for="ankietyIdankieta" />
+                    <h:selectOneMenu id="ankietyIdankieta" value="#{dopuszczeniaController.selected.ankietyIdankieta}" title="#{bundle.CreateDopuszczeniaTitle_ankietyIdankieta}" required="true" requiredMessage="#{bundle.CreateDopuszczeniaRequiredMessage_ankietyIdankieta}">
+                        <f:selectItems value="#{ankietyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDopuszczeniaLabel_sklepyIdsklepy}" for="sklepyIdsklepy" />
+                    <h:selectOneMenu id="sklepyIdsklepy" value="#{dopuszczeniaController.selected.sklepyIdsklepy}" title="#{bundle.CreateDopuszczeniaTitle_sklepyIdsklepy}" required="true" requiredMessage="#{bundle.CreateDopuszczeniaRequiredMessage_sklepyIdsklepy}">
+                        <f:selectItems value="#{sklepyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dopuszczeniaController.create}" value="#{bundle.CreateDopuszczeniaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{dopuszczeniaController.prepareList}" value="#{bundle.CreateDopuszczeniaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDopuszczeniaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

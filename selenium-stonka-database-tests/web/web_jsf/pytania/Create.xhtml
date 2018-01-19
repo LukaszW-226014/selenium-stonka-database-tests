@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePytaniaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePytaniaLabel_idpytania}" for="idpytania" />
+                    <h:inputText id="idpytania" value="#{pytaniaController.selected.idpytania}" title="#{bundle.CreatePytaniaTitle_idpytania}" required="true" requiredMessage="#{bundle.CreatePytaniaRequiredMessage_idpytania}"/>
+                    <h:outputLabel value="#{bundle.CreatePytaniaLabel_tresc}" for="tresc" />
+                    <h:inputText id="tresc" value="#{pytaniaController.selected.tresc}" title="#{bundle.CreatePytaniaTitle_tresc}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pytaniaController.create}" value="#{bundle.CreatePytaniaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pytaniaController.prepareList}" value="#{bundle.CreatePytaniaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePytaniaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAnalitycyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAnalitycyLabel_idanalitycy}" for="idanalitycy" />
+                    <h:inputText id="idanalitycy" value="#{analitycyController.selected.idanalitycy}" title="#{bundle.CreateAnalitycyTitle_idanalitycy}" required="true" requiredMessage="#{bundle.CreateAnalitycyRequiredMessage_idanalitycy}"/>
+                    <h:outputLabel value="#{bundle.CreateAnalitycyLabel_imie}" for="imie" />
+                    <h:inputText id="imie" value="#{analitycyController.selected.imie}" title="#{bundle.CreateAnalitycyTitle_imie}" />
+                    <h:outputLabel value="#{bundle.CreateAnalitycyLabel_nazwisko}" for="nazwisko" />
+                    <h:inputText id="nazwisko" value="#{analitycyController.selected.nazwisko}" title="#{bundle.CreateAnalitycyTitle_nazwisko}" />
+                    <h:outputLabel value="#{bundle.CreateAnalitycyLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{analitycyController.selected.email}" title="#{bundle.CreateAnalitycyTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateAnalitycyLabel_pesel}" for="pesel" />
+                    <h:inputText id="pesel" value="#{analitycyController.selected.pesel}" title="#{bundle.CreateAnalitycyTitle_pesel}" />
+                    <h:outputLabel value="#{bundle.CreateAnalitycyLabel_haslo}" for="haslo" />
+                    <h:inputText id="haslo" value="#{analitycyController.selected.haslo}" title="#{bundle.CreateAnalitycyTitle_haslo}" />
+                    <h:outputLabel value="#{bundle.CreateAnalitycyLabel_administratorzyIdadministrator}" for="administratorzyIdadministrator" />
+                    <h:selectOneMenu id="administratorzyIdadministrator" value="#{analitycyController.selected.administratorzyIdadministrator}" title="#{bundle.CreateAnalitycyTitle_administratorzyIdadministrator}" required="true" requiredMessage="#{bundle.CreateAnalitycyRequiredMessage_administratorzyIdadministrator}">
+                        <f:selectItems value="#{administratorzyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{analitycyController.create}" value="#{bundle.CreateAnalitycySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{analitycyController.prepareList}" value="#{bundle.CreateAnalitycyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAnalitycyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
